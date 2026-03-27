@@ -1,0 +1,81 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Projetos.IndexModel
+
+@{
+    ViewData["Title"] = "Projetos";
+}
+
+<h1>Projetos</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Novo Projeto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataPrazo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Status)
+            </th>
+            <th>
+                Gerente Responsável
+            </th>
+            <th>
+                Equipe
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projeto)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataPrazo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @item.Gerente?.Nome
+                </td>
+                <td>
+                    @if (item.Equipa != null && item.Equipa.Any())
+                    {
+                        @string.Join(", ", item.Equipa.Select(m => m.Nome))
+                    }
+                    else
+                    {
+                        <span class="text-muted">Sem equipe</span>
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

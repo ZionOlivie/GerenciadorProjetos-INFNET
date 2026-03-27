@@ -1,0 +1,43 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Tarefas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tarefa.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tarefa.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tarefa.ProjetoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tarefa.ProjetoId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tarefa.Prioridade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tarefa.Prioridade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tarefa.PercentualConclusao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tarefa.PercentualConclusao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Tarefa.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

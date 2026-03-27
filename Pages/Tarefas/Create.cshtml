@@ -1,0 +1,67 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Tarefas.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Tarefa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Título da Tarefa</label>
+                <input asp-for="Tarefa.Titulo" class="form-control" />
+                <span asp-validation-for="Tarefa.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Tarefa.Descricao" class="control-label"></label>
+                <input asp-for="Tarefa.Descricao" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Tarefa.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Projeto Vinculado</label>
+                <select asp-for="Tarefa.ProjetoId" class="form-control" asp-items="ViewBag.ProjetoId">
+                    <option value="">-- Selecione o Projeto --</option>
+                </select>
+                <span asp-validation-for="Tarefa.ProjetoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Prioridade</label>
+                <select asp-for="Tarefa.Prioridade" class="form-control">
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+                <span asp-validation-for="Tarefa.Prioridade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Membro Responsável</label>
+                <select asp-for="Tarefa.MembroResponsavelId" class="form-control" asp-items="ViewBag.Membros">
+                    <option value="">-- Selecione o Membro --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Percentual de Conclusão (%)</label>
+                <input asp-for="Tarefa.PercentualConclusao" type="number" min="0" max="100" class="form-control" />
+                <span asp-validation-for="Tarefa.PercentualConclusao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

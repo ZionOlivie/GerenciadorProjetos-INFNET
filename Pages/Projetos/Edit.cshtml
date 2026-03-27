@@ -1,0 +1,62 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Projetos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Projeto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Projeto.Id" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Projeto.Titulo" class="control-label"></label>
+                <input asp-for="Projeto.Titulo" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Projeto.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Descricao" class="control-label"></label>
+                <input asp-for="Projeto.Descricao" class="form-control" />
+                <span asp-validation-for="Projeto.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataInicio" class="control-label"></label>
+                <input asp-for="Projeto.DataInicio" class="form-control" />
+                <span asp-validation-for="Projeto.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataPrazo" class="control-label"></label>
+                <input asp-for="Projeto.DataPrazo" class="form-control" />
+                <span asp-validation-for="Projeto.DataPrazo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Status" class="control-label"></label>
+                <input asp-for="Projeto.Status" class="form-control" />
+                <span asp-validation-for="Projeto.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Projeto.GerenteResponsavelId" class="control-label"></label>
+                <input asp-for="Projeto.GerenteResponsavelId" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Projeto.GerenteResponsavelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

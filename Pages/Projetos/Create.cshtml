@@ -1,0 +1,71 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Projetos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Projeto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Projeto.Titulo" class="control-label"></label>
+                <input asp-for="Projeto.Titulo" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Projeto.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Descricao" class="control-label"></label>
+                <input asp-for="Projeto.Descricao" class="form-control" />
+                <span asp-validation-for="Projeto.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataInicio" class="control-label"></label>
+                <input asp-for="Projeto.DataInicio" class="form-control" />
+                <span asp-validation-for="Projeto.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataPrazo" class="control-label"></label>
+                <input asp-for="Projeto.DataPrazo" class="form-control" />
+                <span asp-validation-for="Projeto.DataPrazo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Status" class="control-label"></label>
+                <input asp-for="Projeto.Status" class="form-control" />
+                <span asp-validation-for="Projeto.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label class="control-label">Gerente Responsável</label>
+                <select asp-for="Projeto.GerenteResponsavelId" class="form-control" asp-items="ViewBag.GerenteId">
+                    <option value="">-- Selecione um Gerente --</option>
+                </select>
+                <span asp-validation-for="Projeto.GerenteResponsavelId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Equipe do Projeto (Membros)</label>
+
+                <select asp-for="MembrosSelecionados" class="form-control" asp-items="ViewBag.Usuarios" multiple="multiple" style="height: 120px;">
+                </select>
+
+                <small class="text-muted form-text">Segure a tecla CTRL para selecionar mais de uma pessoa.</small>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

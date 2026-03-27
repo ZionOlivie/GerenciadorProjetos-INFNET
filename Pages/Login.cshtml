@@ -1,0 +1,26 @@
+﻿@page
+@model GerenciadorProjetos.Pages.LoginModel
+@{
+    ViewData["Title"] = "Acesso ao sistema";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-4 border p-4 shadow-sm">
+        <h2 class="text-center">Login</h2>
+        <form method="post">
+            <div class="form-group mb-3">
+                <label>E-mail</label>
+                <input type="email" name="email" class="form-control" required />
+            </div>
+            <div class="form-group mb-3">
+                <label>Senha</label>
+                <input type="password" name="senha" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            @if (ViewData["Erro"] != null)
+            {
+                <p class="text-danger mt-2">@ViewData["Erro"]</p> // Não consegui fazer, estava quebrando todo o meu codigo essa tela de login
+            }
+        </form>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Tarefas.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tarefa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tarefa.Id" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Tarefa.Descricao" class="control-label"></label>
+                <input asp-for="Tarefa.Descricao" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Tarefa.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarefa.ProjetoId" class="control-label"></label>
+                <input asp-for="Tarefa.ProjetoId" class="form-control" />
+                <span asp-validation-for="Tarefa.ProjetoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarefa.Prioridade" class="control-label"></label>
+                <input asp-for="Tarefa.Prioridade" class="form-control" />
+                <span asp-validation-for="Tarefa.Prioridade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarefa.PercentualConclusao" class="control-label"></label>
+                <input asp-for="Tarefa.PercentualConclusao" class="form-control" />
+                <span asp-validation-for="Tarefa.PercentualConclusao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,62 @@
+﻿@page
+@model GerenciadorProjetos.Pages.Tarefas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Criar nova tarefa</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarefa[0].Descricao)
+            </th>
+            <th>
+                Projeto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarefa[0].Prioridade)
+            </th>
+            <th>
+                Responsável
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarefa[0].PercentualConclusao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tarefa) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Titulo)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+             <td>
+                    @item.Projeto?.Titulo
+             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioridade)
+            </td>
+                <td>
+                    @item.MembroResponsavel?.Nome
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentualConclusao)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
